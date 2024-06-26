@@ -33,10 +33,11 @@ addButton.addEventListener('click',(e)=>{
         amountSpace.value = ''
         table.innerHTML += `<tr>
                                 <td class="border border-r-2 border-white">${thisName}</td>
-                                <td class="border border-white">${thisAmount}</td>
+                                <td class="border border-white">${thisAmount.toLocaleString('en-IN')}</td>
                             </tr>`
         totalPayed += thisAmount
-        displayTotal.innerHTML = `Total expenses = Rs. ${totalPayed}`
+        displayTotal.innerHTML = `Total = Rs. ${totalPayed.toLocaleString('en-IN')}`
+        tellUser.innerHTML = ''
     }
 })
 
@@ -44,14 +45,17 @@ addButton.addEventListener('click',(e)=>{
 splitButton.addEventListener('click', (e)=>{
     e.preventDefault()
     const memberCount = parseInt(count.value)
-
+    
     if (memberCount < 1) {
         alert("Number of individuals must be positive!! Please check")
     } else if(isNaN(memberCount)){
         alert("Number of individuals must be a number!! Please check")
     }else{
         let eachPays = totalPayed/memberCount
+        
         eachPays = eachPays.toFixed(2)
+        eachPays = parseInt(eachPays)
+        eachPays = eachPays.toLocaleString('en-IN')
         
         tellUser.innerHTML = ''
         tellUser.innerHTML += `Each person has to pay <span class="font-semibold">Rs. ${eachPays}</span>`
