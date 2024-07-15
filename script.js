@@ -54,7 +54,7 @@ splitButton.addEventListener('click', (e)=>{
         let eachPays = totalPayed/memberCount
         
         eachPays = eachPays.toFixed(2)
-        eachPays = parseInt(eachPays)
+        eachPays = parseFloat(eachPays)
         eachPays = eachPays.toLocaleString('en-IN')
         
         tellUser.innerHTML = ''
